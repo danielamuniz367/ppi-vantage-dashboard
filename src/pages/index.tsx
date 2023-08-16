@@ -60,5 +60,12 @@ type DashboardData = {
 };
 
 export default function Home(props: DashboardData) {
-  return <Dashboard {...props} />;
+  return (
+    <div className="layout_container px-4 mx-auto my-12">
+      <main className="flex flex-col p-10">
+        <h1 className="pb-5 font-bold">Vantage Dashboard</h1>
+        <Dashboard {...props} />
+      </main>
+    </div>
+  );
 }

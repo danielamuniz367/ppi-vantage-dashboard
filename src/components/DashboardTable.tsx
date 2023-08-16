@@ -60,13 +60,14 @@ export default function DashboardTable({ tableData }: DashboardData) {
     getSortedRowModel: getSortedRowModel(),
   });
   return (
-    <div className="p-2">
-      <table>
-        <thead>
+    <div className="bg-white rounded-md p-8">
+      <h2 className="pb-4">All Devices Uptimes</h2>
+      <table className="border-collapse table-auto">
+        <thead className="bg-sky-300">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+                <th key={header.id} className="border border-slate-300 px-5">
                   {header.isPlaceholder ? null : (
                     <div
                       {...{
@@ -91,11 +92,11 @@ export default function DashboardTable({ tableData }: DashboardData) {
             </tr>
           ))}
         </thead>
-        <tbody>
+        <tbody className="bg-white">
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
+                <td key={cell.id} className="border border-slate-300">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

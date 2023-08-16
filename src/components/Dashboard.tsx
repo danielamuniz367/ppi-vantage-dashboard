@@ -17,9 +17,9 @@ export default function Dashboard(props: DashboardData) {
   const { average, tableData } = props;
 
   return (
-    <>
-      <DashboardKPI average={average} />
+    <div className="flex flex-col-reverse sm:flex-row gap-4">
       <DashboardTable tableData={tableData} />
-    </>
+      <DashboardKPI average={average} />
+    </div>
   );
 }

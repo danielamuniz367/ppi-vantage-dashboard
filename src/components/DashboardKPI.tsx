@@ -58,12 +58,15 @@ export default function DashboardKPI(average: any) {
   const SERIES = [76];
 
   return (
-    <Chart
-      type="radialBar"
-      options={OPTIONS}
-      series={SERIES}
-      width={500}
-      height={320}
-    />
+    <div className="flex flex-col items-center bg-white rounded-md p-8">
+      <h2>Total Average Device Uptimes</h2>
+      <Chart
+        type="radialBar"
+        options={OPTIONS}
+        series={SERIES}
+        width={320}
+        height={320}
+      />
+    </div>
   );
 }
