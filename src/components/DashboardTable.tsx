@@ -106,7 +106,6 @@ export default function DashboardTable({ tableData }: any) {
           ))}
         </tbody>
       </table>
-      <div className="h-4" />
     </div>
   );
 }

@@ -3,10 +3,15 @@ import { PrismaClient } from "@prisma/client";
 
 export async function getStaticProps() {
   const prisma = new PrismaClient();
-  const data = await prisma.agent.findMany();
+  // const data = await prisma.agent.findMany();
+  const combinedData = await prisma.device_uptime.findMany({
+    select: {
+      id: true,
+    },
+  });
 
   return {
-    props: { data },
+    props: { combinedData },
   };
 }
 
@@ -22,6 +27,6 @@ type DashboardData = {
   tableData: TableRow[];
 };
 
-export default function Home({ data }: any) {
-  return <Dashboard data={data} />;
+export default function Home({ combinedData }: any) {
+  return <Dashboard data={combinedData} />;
 }

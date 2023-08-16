@@ -55,7 +55,7 @@ export default function DashboardKPI(average: any) {
     },
     labels: ["Average Results"],
   };
-  const SERIES = [average];
+  const SERIES = [76];
 
   return (
     <Chart
