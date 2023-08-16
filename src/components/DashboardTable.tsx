@@ -59,14 +59,17 @@ export default function DashboardTable({ tableData }: DashboardData) {
     getSortedRowModel: getSortedRowModel(),
   });
   return (
-    <div className="bg-white rounded-md p-8">
+    <div className="bg-white rounded-md p-4 md:p-8">
       <h2 className="pb-4">All Devices Uptimes</h2>
       <table className="border-collapse table-auto">
         <thead className="bg-sky-300">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className="border border-slate-300 px-5">
+                <th
+                  key={header.id}
+                  className="border border-slate-300 px-5 md:min-w-[175px]"
+                >
                   {header.isPlaceholder ? null : (
                     <div
                       {...{

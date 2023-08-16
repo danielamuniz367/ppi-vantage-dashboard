@@ -1,7 +1,10 @@
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-export default function DashboardKPI({ average }: any) {
+type DashboardData = {
+  average: number;
+};
+export default function DashboardKPI({ average }: DashboardData) {
   const OPTIONS = {
     chart: {
       offsetY: -20,
@@ -59,13 +62,14 @@ export default function DashboardKPI({ average }: any) {
   const SERIES = [Math.round(average * 100) / 100];
 
   return (
-    <div className="flex flex-col items-center bg-white rounded-md p-8">
-      <h2>Total Average Device Uptimes</h2>
+    <div className="flex flex-col items-center bg-white rounded-md p-4 md:p-8">
+      <h2>Total Average Device Uptime</h2>
       <Chart
+        className="m-auto"
         type="radialBar"
         options={OPTIONS}
         series={SERIES}
-        width={320}
+        width={"100%"}
         height={320}
       />
     </div>
