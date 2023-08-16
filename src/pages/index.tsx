@@ -27,7 +27,9 @@ export async function getStaticProps() {
   });
 
   const tableData = devices.map((device) => {
-    const matchingAgent = agentNames.find((agent) => agent.id === device.id);
+    const matchingAgent = agentNames.find(
+      (agent) => agent.id === device.agent_id
+    );
     const matchingUptime = deviceUptimes.find(
       (uptime) => uptime.device_id === device.id
     );
@@ -45,8 +47,6 @@ export async function getStaticProps() {
       uptime: true,
     },
   });
-
-  console.log("Average uptime:" + aggregations._avg.uptime);
 
   return {
     props: {
