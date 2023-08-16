@@ -17,7 +17,6 @@ type Device = {
 };
 
 type DashboardData = {
-  // average: number;
   tableData: Device[];
 };
 

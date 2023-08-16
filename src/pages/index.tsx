@@ -8,6 +8,7 @@ export async function getStaticProps() {
     select: {
       id: true,
       display_name: true,
+      agent_id: true,
     },
   });
 
@@ -39,9 +40,17 @@ export async function getStaticProps() {
     };
   });
 
+  const aggregations = await prisma.device_uptime.aggregate({
+    _avg: {
+      uptime: true,
+    },
+  });
+
+  console.log("Average uptime:" + aggregations._avg.uptime);
+
   return {
     props: {
-      average: 76,
+      average: JSON.parse(JSON.stringify(aggregations._avg.uptime)),
       tableData: JSON.parse(JSON.stringify(tableData)),
     },
   };

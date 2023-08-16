@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-export default function DashboardKPI(average: any) {
+export default function DashboardKPI({ average }: any) {
   const OPTIONS = {
     chart: {
       offsetY: -20,
@@ -55,7 +55,8 @@ export default function DashboardKPI(average: any) {
     },
     labels: ["Average Results"],
   };
-  const SERIES = [76];
+  // improve this
+  const SERIES = [Math.round(average * 100) / 100];
 
   return (
     <div className="flex flex-col items-center bg-white rounded-md p-8">
