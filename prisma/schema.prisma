@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model agent {
+  id           Int     @id
+  display_name String?
+}
+
+model device {
+  id           Int     @id
+  agent_id     Int?
+  display_name String?
+}
+
+model device_uptime {
+  id        Int      @id
+  device_id Int?
+  uptime    Decimal? @db.Decimal
+}
