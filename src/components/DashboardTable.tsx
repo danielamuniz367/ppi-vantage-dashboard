@@ -6,51 +6,48 @@ import {
   getSortedRowModel,
   SortingState,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Define your row shape
 type Device = {
-  deviceId: string;
-  agentName: string;
-  deviceName: string;
-  deviceUptime: number;
+  id: string;
+  agent_name: string;
+  device_name: string;
+  device_uptime: number;
+};
+
+type DashboardData = {
+  // average: number;
+  tableData: Device[];
 };
 
 const columnHelper = createColumnHelper<Device>();
-
-const defaultData = [
-  {
-    deviceId: "1",
-    agentName: "Japan",
-    deviceName: "CAM-01",
-    deviceUptime: 99.0,
-  },
-  {
-    deviceId: "2",
-    agentName: "Canada",
-    deviceName: "TV-01",
-    deviceUptime: 80.25,
-  },
-];
-// Make some columns!
 const columns = [
-  columnHelper.accessor("deviceId", {
+  columnHelper.accessor("id", {
+    header: () => "Device ID",
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor("agentName", {
+  columnHelper.accessor("agent_name", {
+    header: () => "Agent Name",
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor("deviceName", {
+  columnHelper.accessor("device_name", {
+    header: () => "Device Name",
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor("deviceUptime", {
+  columnHelper.accessor("device_uptime", {
+    header: () => "Device Uptime",
     cell: (info) => info.getValue(),
   }),
 ];
 
-export default function DashboardTable({ tableData }: any) {
-  const [data, setData] = useState([...defaultData]);
+export default function DashboardTable({ tableData }: DashboardData) {
+  const [data, setData] = useState<Device[]>([...tableData]);
   const [sorting, setSorting] = useState<SortingState>([]);
+
+  useEffect(() => {
+    console.log("table data", data);
+  }, []);
 
   const table = useReactTable({
     data,
