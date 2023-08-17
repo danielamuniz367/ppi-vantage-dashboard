@@ -62,13 +62,13 @@ export default function DashboardTable({ tableData }: DashboardData) {
     <div className="bg-white rounded-md p-4 md:p-8">
       <h2 className="pb-4 font-bold">Devices</h2>
       <table className="border-collapse table-auto">
-        <thead className="bg-sky-300">
+        <thead className="bg-sky-900">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="border border-slate-300 px-5 md:min-w-[175px]"
+                  className="border border-slate-300 px-5 md:min-w-[175px] text-white"
                 >
                   {header.isPlaceholder ? null : (
                     <div
