@@ -40,7 +40,7 @@ export default function Home(props: DashboardData) {
     <div className="layout_container px-4 mx-auto my-12">
       <main className="flex flex-col md:p-10">
         <div className="flex items-center md:items-start flex-col md:flex-row justify-between">
-          <h1 className="pb-5 font-bold">Vantage Dashboard</h1>
+          <h1 className="pb-5 font-bold md:text-3xl">Vantage Dashboard</h1>
           <button
             className="mb-5 p-2 bg-sky-700 w-full md:max-w-[200px] rounded-full text-white uppercase content-end"
             onClick={refresh}

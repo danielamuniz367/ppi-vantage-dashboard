@@ -45,7 +45,7 @@ export default function DashboardTable({ tableData }: DashboardData) {
 
   const formedTable: ReactElement = (
     <div className="bg-white rounded-md p-4 md:p-8">
-      <h2 className="pb-4 font-bold">Devices</h2>
+      <h2 className="pb-4 font-bold md:text-2xl">Devices</h2>
       <table className="border-collapse table-auto">
         <thead className="bg-sky-900">
           {table.getHeaderGroups().map((headerGroup) => (
