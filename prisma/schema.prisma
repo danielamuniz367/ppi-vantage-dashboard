@@ -8,18 +8,22 @@ datasource db {
 }
 
 model agent {
-  id           Int     @id
+  id           Int      @id
   display_name String?
+  devices      device[] // establishing a one-to-many relationship
 }
 
 model device {
-  id           Int     @id
-  agent_id     Int?
-  display_name String?
+  id            Int             @id
+  agent_id      Int?
+  display_name  String?
+  agent         agent?          @relation(fields: [agent_id], references: [id])
+  device_uptime device_uptime[]
 }
 
 model device_uptime {
   id        Int      @id
   device_id Int?
   uptime    Decimal? @db.Decimal
+  device    device?  @relation(fields: [device_id], references: [id])
 }

@@ -2,7 +2,7 @@ import DashboardKPI from "./DashboardKPI";
 import DashboardTable from "./DashboardTable";
 
 type Device = {
-  id: string;
+  device_id: string;
   agent_name: string;
   device_name: string;
   device_uptime: number;

@@ -4,43 +4,19 @@ import { PrismaClient } from "@prisma/client";
 export async function getStaticProps() {
   const prisma = new PrismaClient();
 
-  const devices = await prisma.device.findMany({
-    select: {
-      id: true,
-      display_name: true,
-      agent_id: true,
-    },
-  });
+  const combinedData = await prisma.$queryRaw`
+  SELECT
+    d.id AS device_id,
+    d.display_name AS device_name,
+    a.display_name AS agent_name,
+    du.uptime AS device_uptime
+  FROM device d
+  LEFT JOIN agent a ON d.agent_id = a.id
+  LEFT JOIN device_uptime du ON d.id = du.device_id
+  ORDER BY device_id; 
+`;
 
-  const agentNames = await prisma.agent.findMany({
-    select: {
-      id: true,
-      display_name: true,
-    },
-  });
-
-  const deviceUptimes = await prisma.device_uptime.findMany({
-    select: {
-      device_id: true,
-      uptime: true,
-    },
-  });
-
-  const tableData = devices.map((device) => {
-    const matchingAgent = agentNames.find(
-      (agent) => agent.id === device.agent_id
-    );
-    const matchingUptime = deviceUptimes.find(
-      (uptime) => uptime.device_id === device.id
-    );
-
-    return {
-      id: device.id,
-      agent_name: matchingAgent ? matchingAgent.display_name : null,
-      device_name: device.display_name,
-      device_uptime: matchingUptime ? matchingUptime.uptime : null,
-    };
-  });
+  console.log(combinedData);
 
   const aggregations = await prisma.device_uptime.aggregate({
     _avg: {
@@ -51,13 +27,13 @@ export async function getStaticProps() {
   return {
     props: {
       average: JSON.parse(JSON.stringify(aggregations._avg.uptime)),
-      tableData: JSON.parse(JSON.stringify(tableData)),
+      tableData: JSON.parse(JSON.stringify(combinedData)),
     },
   };
 }
 
 type Device = {
-  id: string;
+  device_id: string;
   agent_name: string;
   device_name: string;
   device_uptime: number;

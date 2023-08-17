@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 // Define your row shape
 type Device = {
-  id: string;
+  device_id: string;
   agent_name: string;
   device_name: string;
   device_uptime: number;
@@ -22,7 +22,7 @@ type DashboardData = {
 
 const columnHelper = createColumnHelper<Device>();
 const columns = [
-  columnHelper.accessor("id", {
+  columnHelper.accessor("device_id", {
     header: () => "Device ID",
     cell: (info) => info.getValue(),
   }),
