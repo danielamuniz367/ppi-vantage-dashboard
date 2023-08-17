@@ -61,17 +61,23 @@ export default function DashboardKPI({ average }: DashboardData) {
   // improve this
   const SERIES = [Math.round(average * 100) / 100];
 
+  const loaded = average ? (
+    <Chart
+      className="m-auto"
+      type="radialBar"
+      options={OPTIONS}
+      series={SERIES}
+      width={"100%"}
+      height={320}
+    />
+  ) : (
+    <div>Loading...</div>
+  );
+
   return (
     <div className="flex flex-col items-center bg-white rounded-md p-4 md:p-8">
       <h2 className="font-bold">KPI: Average Device Uptime</h2>
-      <Chart
-        className="m-auto"
-        type="radialBar"
-        options={OPTIONS}
-        series={SERIES}
-        width={"100%"}
-        height={320}
-      />
+      {loaded}
     </div>
   );
 }

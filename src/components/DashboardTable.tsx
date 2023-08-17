@@ -6,7 +6,7 @@ import {
   getSortedRowModel,
   SortingState,
 } from "@tanstack/react-table";
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 // Define your row shape
 type Device = {
@@ -43,11 +43,6 @@ const columns = [
 export default function DashboardTable({ tableData }: DashboardData) {
   const [data, setData] = useState<Device[]>([...tableData] || []);
   const [sorting, setSorting] = useState<SortingState>([]);
-
-  useEffect(() => {
-    console.log("table data", data);
-  }, []);
-
   const table = useReactTable({
     data,
     columns,
@@ -58,7 +53,8 @@ export default function DashboardTable({ tableData }: DashboardData) {
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
   });
-  return (
+
+  const formedTable: ReactElement = (
     <div className="bg-white rounded-md p-4 md:p-8">
       <h2 className="pb-4 font-bold">Devices</h2>
       <table className="border-collapse table-auto">
@@ -108,4 +104,8 @@ export default function DashboardTable({ tableData }: DashboardData) {
       </table>
     </div>
   );
+
+  const loaded = data ? formedTable : <div>Loading...</div>;
+
+  return <>{loaded}</>;
 }

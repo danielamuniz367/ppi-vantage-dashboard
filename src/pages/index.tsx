@@ -16,8 +16,6 @@ export async function getStaticProps() {
   ORDER BY device_id; 
 `;
 
-  console.log(combinedData);
-
   const aggregations = await prisma.device_uptime.aggregate({
     _avg: {
       uptime: true,
@@ -45,13 +43,20 @@ type DashboardData = {
 };
 
 export default function Home(props: DashboardData) {
+  const refresh = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="layout_container px-4 mx-auto my-12">
-      <main className="flex flex-col p-10">
-        <div className="flex flex-row justify-between">
+      <main className="flex flex-col md:p-10">
+        <div className="flex items-center md:items-start flex-col md:flex-row justify-between">
           <h1 className="pb-5 font-bold">Vantage Dashboard</h1>
-          <button className="mb-5 p-2 bg-sky-700 md:min-w-[200px] rounded-full text-white uppercase content-end">
-            Refresh Data
+          <button
+            className="mb-5 p-2 bg-sky-700 w-full md:max-w-[200px] rounded-full text-white uppercase content-end"
+            onClick={refresh}
+          >
+            Refresh for latest
           </button>
         </div>
 
