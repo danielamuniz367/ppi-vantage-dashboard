@@ -7,18 +7,7 @@ import {
   SortingState,
 } from "@tanstack/react-table";
 import { ReactElement, useEffect, useState } from "react";
-
-// Define your row shape
-type Device = {
-  device_id: string;
-  agent_name: string;
-  device_name: string;
-  device_uptime: number;
-};
-
-type DashboardData = {
-  tableData: Device[];
-};
+import { Device, DashboardData } from "@/types/common";
 
 const columnHelper = createColumnHelper<Device>();
 const columns = [
@@ -41,7 +30,7 @@ const columns = [
 ];
 
 export default function DashboardTable({ tableData }: DashboardData) {
-  const [data, setData] = useState<Device[]>([...tableData] || []);
+  const [data, setData] = useState<Device[]>([...(tableData ?? [])]);
   const [sorting, setSorting] = useState<SortingState>([]);
   const table = useReactTable({
     data,

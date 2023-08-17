@@ -1,9 +1,7 @@
 import dynamic from "next/dynamic";
+import { DashboardData } from "@/types/common";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-type DashboardData = {
-  average: number;
-};
 export default function DashboardKPI({ average }: DashboardData) {
   const OPTIONS = {
     chart: {
@@ -59,7 +57,7 @@ export default function DashboardKPI({ average }: DashboardData) {
     labels: ["Average Results"],
   };
   // improve this
-  const SERIES = [Math.round(average * 100) / 100];
+  const SERIES = [Math.round((average ?? 0) * 100) / 100];
 
   const loaded = average ? (
     <Chart

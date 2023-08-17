@@ -1,17 +1,6 @@
 import DashboardKPI from "./DashboardKPI";
 import DashboardTable from "./DashboardTable";
-
-type Device = {
-  device_id: string;
-  agent_name: string;
-  device_name: string;
-  device_uptime: number;
-};
-
-type DashboardData = {
-  average: number;
-  tableData: Device[];
-};
+import { Device, DashboardData } from "@/types/common";
 
 export default function Dashboard(props: DashboardData) {
   const { average, tableData } = props;

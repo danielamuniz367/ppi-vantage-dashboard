@@ -1,5 +1,6 @@
 import Dashboard from "@/components/Dashboard";
 import { PrismaClient } from "@prisma/client";
+import { Device, DashboardData } from "@/types/common";
 
 export async function getStaticProps() {
   const prisma = new PrismaClient();
@@ -29,18 +30,6 @@ export async function getStaticProps() {
     },
   };
 }
-
-type Device = {
-  device_id: string;
-  agent_name: string;
-  device_name: string;
-  device_uptime: number;
-};
-
-type DashboardData = {
-  average: number;
-  tableData: Device[];
-};
 
 export default function Home(props: DashboardData) {
   const refresh = () => {
