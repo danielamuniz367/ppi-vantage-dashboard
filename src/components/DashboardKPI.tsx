@@ -63,7 +63,7 @@ export default function DashboardKPI({ average }: DashboardData) {
 
   return (
     <div className="flex flex-col items-center bg-white rounded-md p-4 md:p-8">
-      <h2>Total Average Device Uptime</h2>
+      <h2 className="font-bold">KPI: Average Device Uptime</h2>
       <Chart
         className="m-auto"
         type="radialBar"

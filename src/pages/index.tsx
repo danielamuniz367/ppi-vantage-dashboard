@@ -47,8 +47,11 @@ type DashboardData = {
 export default function Home(props: DashboardData) {
   return (
     <div className="layout_container px-4 mx-auto my-12">
-      <main className="flex flex-col p-10">
+      <main className="flex flex-col items-center p-10">
         <h1 className="pb-5 font-bold">Vantage Dashboard</h1>
+        <button className="mb-5 p-3 min-w-full md:min-w-[25%] bg-blue-800 rounded-full text-white">
+          Refresh Data
+        </button>
         <Dashboard {...props} />
       </main>
     </div>
