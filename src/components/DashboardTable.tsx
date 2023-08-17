@@ -41,7 +41,7 @@ const columns = [
 ];
 
 export default function DashboardTable({ tableData }: DashboardData) {
-  const [data, setData] = useState<Device[]>([...tableData]);
+  const [data, setData] = useState<Device[]>([...tableData] || []);
   const [sorting, setSorting] = useState<SortingState>([]);
 
   useEffect(() => {
