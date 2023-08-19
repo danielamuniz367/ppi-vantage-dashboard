@@ -49,10 +49,6 @@ export default function Home() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log(data);
-  });
-
   return (
     <div className="layout_container px-4 mx-auto my-12">
       <main className="flex flex-col md:p-10">
