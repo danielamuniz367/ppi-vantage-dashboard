@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/updateData.ts",
-      "schedule": "* * * * *"
+      "schedule": "0 8 * * *"
     }
   ]
 }
