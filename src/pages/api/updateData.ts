@@ -120,7 +120,7 @@ async function fetchAndInsertUptimeData(client: any) {
   }
 }
 
-cron.schedule("* * * * *", async () => {
+async () => {
   const client = await getClient();
 
   try {
@@ -131,4 +131,4 @@ cron.schedule("* * * * *", async () => {
     // Release the client back to the pool regardless of success or failure
     client.release();
   }
-});
+};
