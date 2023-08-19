@@ -94,7 +94,7 @@ export default function DashboardTable({ tableData }: DashboardData) {
     </div>
   );
 
-  const loaded = data ? formedTable : <div>Loading...</div>;
+  const loaded = tableData ? formedTable : <div>Loading...</div>;
 
   return <>{loaded}</>;
 }
