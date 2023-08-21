@@ -13,6 +13,7 @@
     "@prisma/client": "^5.1.1",
     "@tanstack/react-table": "^8.9.3",
     "@types/node": "20.5.0",
+    "@types/node-cron": "^3.0.8",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "apexcharts": "^3.41.1",

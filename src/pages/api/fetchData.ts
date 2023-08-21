@@ -2,14 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getClient } from "../../../db"; // Import your database connection logic
 import prisma from "../../../prisma";
 
-const API_BASE_URL = "https://interview-app-ppi.vercel.app/api/agent";
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    // const prisma = new PrismaClient();
     const client = await getClient();
     {
       try {

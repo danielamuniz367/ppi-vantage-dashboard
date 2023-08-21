@@ -1,4 +1,4 @@
-import { getClient } from "../../../db"; // Import your database connection logic
+import { getClient } from "./db"; // Import your database connection logic
 var cron = require("node-cron");
 
 const API_BASE_URL = "https://interview-app-ppi.vercel.app/api/agent";

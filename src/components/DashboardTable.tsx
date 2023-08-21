@@ -96,5 +96,12 @@ export default function DashboardTable({ tableData }: DashboardData) {
 
   const loaded = tableData ? formedTable : <div>Loading...</div>;
 
-  return <>{loaded}</>;
+  return (
+    <>
+      <div className="bg-white rounded-md p-4 md:p-8">
+        <h2 className="pb-4 font-bold md:text-2xl">Devices</h2>
+        {loaded}
+      </div>
+    </>
+  );
 }
